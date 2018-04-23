@@ -23,10 +23,13 @@ namespace Palindrome
         {
             if (strOne.Length == strTwo.Length)
             {
+                Console.WriteLine("lengths are same");
                 return true;
+               
             }
             else
             {
+                Console.WriteLine("lengths are not same");
                 return false;
             }
         }
@@ -40,14 +43,17 @@ namespace Palindrome
 
             for (int i = 0; i != strOne.Length; i++)
             {
+                char c1 = strOne[i];
 
                 for (int j = strTwo.Length - 1; j != 0; j--)
                 {
 
-                    char c1 = strOne[i];
+                    
                     char c2 = strTwo[j];
 
-                    if (c1.Equals(c2) == false)
+                    Console.WriteLine(c1 + " and " + c2);
+
+                    if (c1 != c2)
                     {
                         isPalin = false;
                     }
