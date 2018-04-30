@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantReviews.Library
+namespace Menu
 {
-    public interface IItem
+    class Program
     {
-         void displayInfo();
+        static void Main(string[] args)
+        {
+        }
     }
-
-    
-
-   
-
-
 }

@@ -9,23 +9,13 @@ namespace RestaurantReviews.Library
     public interface IItemList
     {
 
-        void LeaderByProperty(object property, List<object> list, int numLeaders);
+        void GetLeadersByProperty(string property, int numLeaders);
+
+
 
     }
 
-    public class RestarantList : IItemList
-    {
-        public void LeaderByProperty(object property, List<object> list, int numLeaders)
-        {
-            throw new NotImplementedException();
-        }
-    }
+  
 
-    public class ReviewList : IItemList
-    {
-        public void LeaderByProperty(object property, List<object> list, int numLeaders)
-        {
-            throw new NotImplementedException();
-        }
-    }
+   
 }
