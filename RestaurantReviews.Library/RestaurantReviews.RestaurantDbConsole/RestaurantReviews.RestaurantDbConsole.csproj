@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5712BBB-F5E9-4674-B146-493C5E3A6ECC}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RestaurantReviews.Library</RootNamespace>
-    <AssemblyName>RestaurantReviews.Library</AssemblyName>
+    <ProjectGuid>{2DE38FB1-1F50-46AF-B3D2-6FBDE3882875}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>RestaurantReviews.RestaurantDbConsole</RootNamespace>
+    <AssemblyName>RestaurantReviews.RestaurantDbConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -38,7 +40,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,19 +49,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IItem.cs" />
-    <Compile Include="IItemList.cs" />
-    <Compile Include="Location.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Restaurant.cs" />
-    <Compile Include="RestaurantHandler.cs" />
-    <Compile Include="RestaurantList.cs" />
-    <Compile Include="Review.cs" />
-    <Compile Include="ReviewList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantReviews.DataAccessLayer\RestaurantReviews.DataAccessLayer\RestaurantReviews.DataAccessLayer.csproj">
+      <Project>{94ec2252-a009-459a-8618-cb72d9d5b351}</Project>
+      <Name>RestaurantReviews.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RestaurantReviews.Library\RestaurantReviews.Library.csproj">
+      <Project>{f5712bbb-f5e9-4674-b146-493c5e3a6ecc}</Project>
+      <Name>RestaurantReviews.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

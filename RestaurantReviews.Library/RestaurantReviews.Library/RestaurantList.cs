@@ -8,12 +8,17 @@ namespace RestaurantReviews.Library
 {
     public class RestaurantList : IItemList
     {
-        public List<Restaurant> restaurants = new List<Restaurant>();
+        //public int RestaurantListID { get; set; }
+        //public List<Restaurant> restaurants = new List<Restaurant>();
+        public List<Restaurant> restaurants { get; set; }
         //List<Restaurant> currentRestaurantView;
         Restaurant selectedRestaurant;
         bool restaurantIsSelected = false;
 
-       
+       public RestaurantList ()
+        {
+            restaurants = new List<Restaurant>();
+        }
 
         public bool IsRestaurantSelected()
         {
@@ -70,6 +75,14 @@ namespace RestaurantReviews.Library
             }
         }
 
+
+        public void AddRestaurant(Restaurant newPlace)
+        {
+            restaurants.Add(newPlace);
+        }
+
+
+
         public void AddRestaurant()
         {
             Restaurant newRestaurant = new Restaurant();
@@ -100,6 +113,8 @@ namespace RestaurantReviews.Library
             Console.WriteLine("Zipcode");
             input = Console.ReadLine();
             newRestaurant.restaurantLocation.Zipcode = Convert.ToInt32(input);
+
+          
 
             restaurants.Add(newRestaurant);
         }

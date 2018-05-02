@@ -3,36 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace RestaurantReviews.Library
 {
     public class Restaurant : IItem
     {
-        public struct Location
+        public int RestaurantID { get; set; }
+        //public int ReviewListID { get; set; } //foreign key
+
+         /*
+        public class Location
         {
-            int _streetNum;
-            string _streetName;
-            string _city;
             string _state;
-            int _zipcode;
 
-            public int StreetNumber
-            {
-                get {return _streetNum; }
-                set { _streetNum = value; }
-            }
+            public int StreetNumber { get; set; }
 
-            public string StreetName
-            {
-                get { return _streetName; }
-                set { _streetName = value; }
-            }
+            public string StreetName { get; set; }
 
-            public string City
-            {
-                get { return _city; }
-                set { _city = value; }
-            }
+            public string City { get; set; }
 
             public string State
             {
@@ -40,11 +30,7 @@ namespace RestaurantReviews.Library
                  set { _state = value; }
             }
 
-            public int Zipcode
-            {
-                get { return _zipcode; }
-                set { _zipcode = value;  }
-            }
+            public int Zipcode { get; set; }
 
             public override string ToString()
             {
@@ -52,25 +38,58 @@ namespace RestaurantReviews.Library
             }
 
         }
-
+        */
+        
         public string RestaurantName { get; set; }
         public string FoodType { get; set; }
 
 
+    /*
         public double AverageRating {
             get { return reviewList.AggregateScore(); }
-            set { value = reviewList.AggregateScore(); }
+            set { value = reviewList.AggregateScore();
+                AverageRating = value;
+            }
         }
+        */
 
-        public Location restaurantLocation = new Location();
+        public double AverageRating { get; set; }
 
-        public ReviewList reviewList = new ReviewList();
+
+        //public Location restaurantLocation = new Location();
+        // public Location restaurantLocation { get; set; }
+
+        [Required]
+        public Location restaurantLocation { get; set; }
+
+        //public ReviewList reviewList = new ReviewList();
+
+        [Required]
+        public ReviewList reviewList { get; set; }
+
+        
+  public Restaurant()
+        {
+            reviewList = new ReviewList();
+            restaurantLocation = new Location();
+        }
 
         public void displayInfo()
         {
+            Double rating = AverageRating;
             Console.WriteLine(RestaurantName);
             Console.WriteLine(FoodType);
-            Console.WriteLine(AverageRating);
+
+            if (rating != 0)
+            {
+                Console.WriteLine("Rating out of 5" + AverageRating);
+            }
+            else
+            {
+                Console.WriteLine("No reviews");
+            }
+
+            Console.WriteLine(restaurantLocation.StreetName);
             Console.WriteLine(restaurantLocation.ToString() + "\n");
         }
         

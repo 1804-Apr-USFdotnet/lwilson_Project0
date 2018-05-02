@@ -8,9 +8,13 @@ namespace RestaurantReviews.Library
 {
     public class ReviewList : IItemList
     {
-
-        public List<Review> reviews = new List<Review>();
-        double avgScore;
+        public int ID { get; set; }
+        //public int RestaurantID { get; set; } //foreign key
+        //public List<Review> reviews = new List<Review>();
+        public List<Review> reviews { get; set; }
+        public double avgScore { get { return AggregateScore(); }
+                          set { avgScore = value; }
+        }
 
 
         public void GetLeadersByProperty(string property, int numLeaders)
@@ -20,17 +24,27 @@ namespace RestaurantReviews.Library
 
         }
 
+        public ReviewList()
+        {
+            reviews = new List<Review>();
+        }
 
         public double AggregateScore()
         {
             //reviews = reviews.OrderBy(x => x.GetType().GetProperty("")
             //var aggScore = from review in reviews
 
-            double netScore = reviews.Sum(item => item.Rating);
-            avgScore = netScore / reviews.Count;
+            if (reviews.Any() == true)
+            {
+                double netScore = reviews.Sum(item => item.Rating);
+                avgScore = netScore / reviews.Count;
 
 
-            return avgScore;
+                return avgScore;
+            } else 
+            {
+                return 0;
+            }
         }
 
         public void printReviews()

@@ -8,10 +8,12 @@ namespace RestaurantReviews.Library
 {
     public class Review : IItem
     {
+        public int ID { get; set; }
+        //public int ReviewListID { get; set; } //foreign key
         //public enum SortFieldType { SortNumber, SortString }
 
 
-       
+
 
         public string ReviewerName { get; set; }
         
@@ -52,7 +54,7 @@ namespace RestaurantReviews.Library
         public ReviewDate reviewDate = new ReviewDate();
         */
 
-        public DateTime reviewDate;
+        public DateTime reviewDate { get; set; }
         
         public Review()
         {
