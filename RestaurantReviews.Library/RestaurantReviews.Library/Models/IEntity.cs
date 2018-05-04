@@ -4,18 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace RestaurantReviews.Library
 {
-    public interface IItemList
+    public interface IEntity
     {
-
-        void GetLeadersByProperty(string property, int numLeaders);
-
-
-
+        DateTime Created { get; set; }
+        DateTime? Modified { get; set; }
     }
-
-  
-
-   
 }

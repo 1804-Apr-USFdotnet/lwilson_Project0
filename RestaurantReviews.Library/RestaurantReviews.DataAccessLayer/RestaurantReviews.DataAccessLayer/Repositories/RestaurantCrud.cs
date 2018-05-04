@@ -4,16 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantReviews.Library
+namespace RestaurantReviews.DataAccessLayer
 {
-    public interface IItem
+    public class RestaurantCrud
     {
-         void displayInfo();
+
     }
-
-    
-
-   
-
-
 }

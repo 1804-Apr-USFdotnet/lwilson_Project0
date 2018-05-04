@@ -6,38 +6,16 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Library
 {
-    public class ReviewList : IItemList
+    public static class ReviewHandler 
     {
-        public int ID { get; set; }
-        //public int RestaurantID { get; set; } //foreign key
-        //public List<Review> reviews = new List<Review>();
-        public List<Review> reviews { get; set; }
-        public double avgScore { get { return AggregateScore(); }
-                          set { avgScore = value; }
-        }
+        
 
-
-        public void GetLeadersByProperty(string property, int numLeaders)
+        public static double AggregateRatings(List<Review> reviews)
         {
-
-            throw new NotImplementedException();
-
-        }
-
-        public ReviewList()
-        {
-            reviews = new List<Review>();
-        }
-
-        public double AggregateScore()
-        {
-            //reviews = reviews.OrderBy(x => x.GetType().GetProperty("")
-            //var aggScore = from review in reviews
-
-            if (reviews.Any() == true)
+            if ((reviews.Any() == true) & (reviews != null))
             {
-                double netScore = reviews.Sum(item => item.Rating);
-                avgScore = netScore / reviews.Count;
+                double netScore = reviews.Sum(x => x.Rating);
+                double avgScore = netScore / reviews.Count;
 
 
                 return avgScore;
@@ -47,7 +25,7 @@ namespace RestaurantReviews.Library
             }
         }
 
-        public void printReviews()
+        public static void PrintReviews(List<Review> reviews)
         {
             if (reviews.Any() == false)
             {
@@ -57,12 +35,12 @@ namespace RestaurantReviews.Library
             {
                 foreach (Review rev in reviews)
                 {
-                    rev.displayInfo();
+                    rev.DisplayReview();
                 }
             }
         }
 
-        public void AddReview()
+        public static void AddReview(List<Review> reviews)
         {
             Review newReview = new Review();
 

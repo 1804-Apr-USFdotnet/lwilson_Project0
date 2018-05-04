@@ -11,12 +11,16 @@ namespace RestaurantReviews.Menu
     {
         public static void Main(string[] args)
         {
-            RestaurantList listRestaurants = new RestaurantList();
-            RestaurantXMLHandler restaurantXMLHandler = new RestaurantXMLHandler();
 
-            listRestaurants = restaurantXMLHandler.ReadListFromXML();
+            XMLSerialization xmlSerializer = new XMLSerialization();
+            RestaurantHandler.restaurants = xmlSerializer.ReadListFromXML();
+
+
+
 
             string input;
+            string menuInput;
+            string reviewMenuInput;
             string exitFlag = "!";
             bool exitMenu = false;
 
@@ -24,77 +28,86 @@ namespace RestaurantReviews.Menu
 
             while (exitMenu == false)
             {
-                if (listRestaurants.IsRestaurantSelected() == false)
+                if (RestaurantHandler.IsRestaurantSelected() == false)
                 {
-                    Console.WriteLine("1 Select a Restaurant,  2 display all Restaurants, 3 add Restaurant, 4 Search for a Restaurant  , ! = quit \n");
+                    Console.WriteLine("1 Select a Restaurant,  2 display all Restaurants, 3 add Restaurant, 4 Search for a Restaurant, 5 Top 3 Restaurants, 6 Sort Restaurants ! = quit \n");
 
-                    input = Console.ReadLine().ToString();
-                    Console.WriteLine(input);
+                    menuInput = Console.ReadLine().ToString();
+                    Console.WriteLine(menuInput);
 
-                    if (input.Equals(exitFlag))
+                    if (menuInput.Equals(exitFlag))
                     {
                         Console.WriteLine("Quitting");
                         exitMenu = true;
 
                     }
-                    else if (input == "1")
+                    else if (menuInput == "1")
                     {
-                        Console.WriteLine(input);
+                        
                         Console.WriteLine("Enter a name or partial restaurant name to select");
                         input = Console.ReadLine().ToString();
-                        listRestaurants.SelectRestaurant(input);
+                        RestaurantHandler.SelectRestaurant(input);
                     }
-                    else if (input == "2")
+                    else if (menuInput == "2")
                     {
                         Console.WriteLine("Display all Restaurants \n");
-                        listRestaurants.DisplayAll();
+                        RestaurantHandler.DisplayAll();
 
                     }
-                    else if (input == "3")
+                    else if (menuInput == "3")
                     {
                         Console.WriteLine("Add Restaurant \n");
-                        listRestaurants.AddRestaurant();
-                        restaurantXMLHandler.WriteListToXML(listRestaurants);
+                        RestaurantHandler.AddRestaurant();
+                        xmlSerializer.WriteListToXML(RestaurantHandler.restaurants);
 
-                    } else if (input == "4")
+                    } else if (menuInput == "4")
                     {
                         Console.WriteLine("Enter the name or partial name of a restaurant to search for");
                         input = Console.ReadLine().ToString();
-                        listRestaurants.SearchByName(input);
+                        RestaurantHandler.SearchByName(input);
                     }
+                    else if (menuInput == "5")
+                    {
+                        RestaurantHandler.TopThree();
+                    } else if (menuInput == "6")
+                    {
+                        
+                        Console.WriteLine("Sort restaurants by 'name', 'rating', 'type', 'address'");
+                      
+                    }
+
                     else
                     {
-                        Console.WriteLine(input);
                         Console.WriteLine("select a menu option \n");
 
                     }
                 }
 
-                else if (listRestaurants.IsRestaurantSelected() == true)
+                else if (RestaurantHandler.IsRestaurantSelected() == true)
 
                 {
                     Console.WriteLine("1 Display Reviews, 2 Review this Restaurant, 3 Return to main menu \n");
-                    input = Console.ReadLine().ToString();
+                    reviewMenuInput = Console.ReadLine().ToString();
 
-                    if (input == "1")
+                    if (reviewMenuInput == "1")
                     {
                         Console.WriteLine("Display Reviews");
-                        listRestaurants.DisplayTheseReviews();
+                        RestaurantHandler.DisplayTheseReviews();
                     }
-                    else if (input == "2")
+                    else if (reviewMenuInput == "2")
                     {
                         Console.WriteLine("Add Review \n");
-                        listRestaurants.AddReviewToThisRestaurant();
-                        restaurantXMLHandler.WriteListToXML(listRestaurants);
+                        RestaurantHandler.AddReviewToThisRestaurant();
+                        xmlSerializer.WriteListToXML(RestaurantHandler.restaurants);
                     }
-                    else if (input == "3")
+                    else if (reviewMenuInput == "3")
                     {
-                        listRestaurants.DeselectRestaurant();
+                        RestaurantHandler.DeselectRestaurant();
                         //unselect restaurant
                     }
                     else
                     {
-                        Console.WriteLine(input);
+                        Console.WriteLine(reviewMenuInput);
                         Console.WriteLine("select a menu option \n");
                     }
                 }

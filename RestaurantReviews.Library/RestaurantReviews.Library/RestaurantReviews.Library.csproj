@@ -48,15 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IItem.cs" />
-    <Compile Include="IItemList.cs" />
-    <Compile Include="Location.cs" />
+    <Compile Include="Models\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Restaurant.cs" />
+    <Compile Include="Models\Restaurant.cs" />
+    <Compile Include="XMLSerialization.cs" />
     <Compile Include="RestaurantHandler.cs" />
-    <Compile Include="RestaurantList.cs" />
-    <Compile Include="Review.cs" />
-    <Compile Include="ReviewList.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="ReviewHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
